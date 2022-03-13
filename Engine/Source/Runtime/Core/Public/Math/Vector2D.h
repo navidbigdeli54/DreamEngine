@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Platform/Platform.h"
-#include "Platform/PlatformMath.h"
+#include "../Platform/Platform.h"
+#include "../Platform/PlatformMath.h"
 
 struct Vector3D;
 

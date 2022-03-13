@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Platform/Generic/GenericPlatformTypes.h"
+#include "../Generic/GenericPlatformTypes.h"
 
 #ifdef __GNUC__
 struct LinuxPlatformTypes : public GenericPlatformTypes

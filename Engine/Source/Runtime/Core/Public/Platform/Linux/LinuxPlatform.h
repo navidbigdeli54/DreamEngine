@@ -1,3 +1,3 @@
 #pragma once
 
-#include "Platform/Generic/GenericPlatform.h"
+#include "../Generic/GenericPlatform.h"

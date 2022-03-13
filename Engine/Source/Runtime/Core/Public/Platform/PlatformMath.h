@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Platform/Linux/LinuxPlatformMath.h"
-#include "Platform/Windows/WindowsPlatformMath.h"
+#include "Linux/LinuxPlatformMath.h"
+#include "Windows/WindowsPlatformMath.h"
 
 typedef PlatformMath Math;
