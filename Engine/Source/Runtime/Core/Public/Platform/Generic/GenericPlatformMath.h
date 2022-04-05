@@ -15,6 +15,8 @@ public:
 	FORCEINLINE static float Sqrt(const float value);
 
 	FORCEINLINE static float Square(const float value);
+
+	FORCEINLINE static bool AlmostEqual(const float lhs, const float rhs);
 };
 
 template<typename T>
@@ -37,4 +39,9 @@ FORCEINLINE float GenericPlatformMath::Sqrt(const float value)
 FORCEINLINE float GenericPlatformMath::Square(const float value)
 {
 	return value * value;
+}
+
+FORCEINLINE bool GenericPlatformMath::AlmostEqual(const float lhs, const float rhs)
+{
+	return GenericPlatformMath::Abs(lhs - rhs) < NEAR_ZERO_NUMBER;
 }
