@@ -4,4 +4,5 @@ project(DreamEngine VERSION 0.1.0)
 
 add_subdirectory(Engine/Source/Runtime)
 add_subdirectory(Engine/Source/Launch)
+add_subdirectory(Engine/Source/Test)
 
