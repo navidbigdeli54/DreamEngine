@@ -1,9 +1,7 @@
 #pragma once
 
-#include "../Platform/Platform.h"
-#include "../Platform/PlatformMath.h"
-
-struct Vector3D;
+#include "Platform/Platform.h"
+#include "Platform/PlatformMath.h"
 
 struct Vector2D
 {
@@ -32,14 +30,6 @@ public:
 	FORCEINLINE Vector2D(float x, float y);
 
 	FORCEINLINE Vector2D(const Vector2D &vector);
-
-	FORCEINLINE explicit Vector2D(const Vector3D &vector);
-
-public:
-
-	FORCEINLINE Vector2D operator^ (const Vector2D &rhs) const;
-
-	FORCEINLINE Vector2D operator* (const Vector2D &rhs) const;
 
 public:
 
