@@ -45,9 +45,9 @@ public:
 
 	FORCEINLINE void Set(float x, float y);
 
-	FORCEINLINE float Size() const;
+	FORCEINLINE float Magnitude() const;
 
-	FORCEINLINE float SizeSquared() const;
+	FORCEINLINE float MagnitudeSquared() const;
 
 	FORCEINLINE bool IsZero() const;
 
@@ -76,12 +76,12 @@ FORCEINLINE void Vector2D::Set(float x, float y)
 	Y = y;
 }
 
-FORCEINLINE float Vector2D::Size() const
+FORCEINLINE float Vector2D::Magnitude() const
 {
-	return Math::Sqrt(SizeSquared());
+	return Math::Sqrt(MagnitudeSquared());
 }
 
-FORCEINLINE float Vector2D::SizeSquared() const
+FORCEINLINE float Vector2D::MagnitudeSquared() const
 {
 	return X * X + Y * Y;
 }

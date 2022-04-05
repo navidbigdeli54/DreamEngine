@@ -15,7 +15,7 @@ TEST_CASE("Size", "[Vector2D]")
     float randX = rand() % 100;
     float randY = rand() % 100;
     Vector2D vec2(randX, randY);
-    REQUIRE(vec2.Size() == Math::Sqrt(randX * randX + randY * randY));
+    REQUIRE(vec2.Magnitude() == Math::Sqrt(randX * randX + randY * randY));
 }
 
 TEST_CASE("SizeSqure", "[Vector2]")
@@ -24,7 +24,7 @@ TEST_CASE("SizeSqure", "[Vector2]")
     float randX = rand() % 100;
     float randY = rand() % 100;
     Vector2D vec2(randX, randY);
-    REQUIRE(vec2.SizeSquared() == randX * randX + randY * randY);
+    REQUIRE(vec2.MagnitudeSquared() == randX * randX + randY * randY);
 }
 
 TEST_CASE("IsZero", "[Vector2D]")
