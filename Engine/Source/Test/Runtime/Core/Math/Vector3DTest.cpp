@@ -46,9 +46,9 @@ TEST_CASE("Vector3D::Vector3D(float)", "[Vector3D]")
     srand(time(NULL));
     float random = rand() % 100;
     Vector3D vec3(random);
-    REQUIRE(Math::AlmostEqual(vec3.X, random));
-    REQUIRE(Math::AlmostEqual(vec3.Y, random));
-    REQUIRE(Math::AlmostEqual(vec3.Z, random));
+    REQUIRE(vec3.X == random);
+    REQUIRE(vec3.Y == random);
+    REQUIRE(vec3.Z == random);
 }
 
 TEST_CASE("Vector3D::Vector3D(float, float, float)", "[Vector3D]")
@@ -59,9 +59,9 @@ TEST_CASE("Vector3D::Vector3D(float, float, float)", "[Vector3D]")
     float randZ = rand() % 100;
 
     Vector3D vec3(randX, randY, randZ);
-    REQUIRE(Math::AlmostEqual(vec3.X, randX));
-    REQUIRE(Math::AlmostEqual(vec3.Y, randY));
-    REQUIRE(Math::AlmostEqual(vec3.Z, randZ));
+    REQUIRE(vec3.X == randX);
+    REQUIRE(vec3.Y == randY);
+    REQUIRE(vec3.Z == randZ);
 }
 
 TEST_CASE("Vector3D::Vector3D(&Vector3D)", "[Vector3D]")
@@ -75,9 +75,9 @@ TEST_CASE("Vector3D::Vector3D(&Vector3D)", "[Vector3D]")
 
     Vector3D otherVec3(vec3);
 
-    REQUIRE(Math::AlmostEqual(otherVec3.X, randX));
-    REQUIRE(Math::AlmostEqual(otherVec3.Y, randY));
-    REQUIRE(Math::AlmostEqual(otherVec3.Z, randZ));
+    REQUIRE(otherVec3.X == randX);
+    REQUIRE(otherVec3.Y == randY);
+    REQUIRE(otherVec3.Z == randZ);
 }
 
 TEST_CASE("Vector3D::CrossProduct(&Vector3D)", "[Vector3D]")
