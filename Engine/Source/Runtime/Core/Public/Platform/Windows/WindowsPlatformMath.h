@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef _MSC_VER
-#include "../Generic/GenericPlatformMath.h"
+#include "Platform/Generic/GenericPlatformMath.h"
 
 struct WindowsPlatformMath : public GenericPlatformMath
 {

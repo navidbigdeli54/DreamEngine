@@ -2,7 +2,7 @@
 
 #ifdef _MSC_VER
 
-#include "../Generic/GenericPlatformTypes.h"
+#include "Platform/Generic/GenericPlatformTypes.h"
 
 struct WindowsPlatformTypes : public GenericPlatformTypes
 {
