@@ -12,7 +12,8 @@ add_executable(Test
   Test.cpp
   Runtime/Core/Math/Vector2DTest.cpp
   Runtime/Core/Math/Vector3DTest.cpp
-  Runtime/Core/Platform/PlatformTypesTest.cpp)
+  Runtime/Core/Platform/PlatformTypesTest.cpp
+  Runtime/Component/TransformTest.cpp)
 
 target_link_libraries(Test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(Test PRIVATE Runtime)
