@@ -10,6 +10,7 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(Test
   Test.cpp
+  Runtime/Core/Collection/ListTest.cpp
   Runtime/Core/Math/Vector2DTest.cpp
   Runtime/Core/Math/Vector3DTest.cpp
   Runtime/Core/Platform/PlatformTypesTest.cpp

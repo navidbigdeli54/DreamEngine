@@ -15,6 +15,7 @@ add_library(Runtime
     Core/Public/Platform/Windows/WindowsPlatform.h
     Core/Public/Platform/Windows/WindowsPlatformMath.h
     Core/Public/Platform/Windows/WindowsPlatformTypes.h
+    Core/Public/Collection/List.h
     
     Component/Private/Transform.cpp
     Core/Private/Math/Vector.cpp
