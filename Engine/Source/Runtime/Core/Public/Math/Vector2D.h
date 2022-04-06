@@ -53,14 +53,6 @@ public:
 	FORCEINLINE bool IsNearlyZero(float tolerance = NEAR_ZERO_NUMBER) const;
 };
 
-const Vector2D Vector2D::Zero = Vector2D();
-
-const Vector2D Vector2D::One = Vector2D(1);
-
-const Vector2D Vector2D::Up = Vector2D(0, 1);
-
-const Vector2D Vector2D::Right = Vector2D(1, 0);
-
 FORCEINLINE Vector2D::Vector2D() : X(0), Y(0) {}
 
 FORCEINLINE Vector2D::Vector2D(float f) : X(f), Y(f) {}
