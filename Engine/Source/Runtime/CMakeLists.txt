@@ -1,4 +1,7 @@
 add_library(Runtime
+    Engine/Public/Object.h
+    Engine/Public/Engine.h
+    Engine/Public/Actor.h
     Engine/Public/Component/Component.h
     Engine/Public/Component/Transform.h
     Core/Public/Math/Vector2D.h
@@ -17,6 +20,7 @@ add_library(Runtime
     Core/Public/Platform/Windows/WindowsPlatformTypes.h
     Core/Public/Collection/List.h
     
+    Engine/Private/Actor.cpp
     Engine/Private/Component/Transform.cpp
     Core/Private/Math/Vector.cpp
 )

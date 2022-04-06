@@ -1,4 +1,5 @@
-class Component
+#include "Object.h"
+
+class Component : public Object
 {
-    
 };
