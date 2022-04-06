@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdint.h>
+#include <cstddef>
+
 struct GenericPlatformTypes
 {
 	typedef uint8_t UInt8;
