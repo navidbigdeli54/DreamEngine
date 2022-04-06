@@ -1,4 +1,4 @@
-#include "Transform.h"
+#include "Component/Transform.h"
 
 Transform::Transform() : parent(nullptr), position(Vector3D::Zero), rotation(Vector3D::Zero), scale(Vector3D::One)
 {

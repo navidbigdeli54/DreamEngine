@@ -1,6 +1,6 @@
 add_library(Runtime
-    Component/Public/Component.h
-    Component/Public/Transform.h
+    Engine/Public/Component/Component.h
+    Engine/Public/Component/Transform.h
     Core/Public/Math/Vector2D.h
     Core/Public/Math/Vector3D.h
     Core/Public/Platform/Platform.h
@@ -17,12 +17,12 @@ add_library(Runtime
     Core/Public/Platform/Windows/WindowsPlatformTypes.h
     Core/Public/Collection/List.h
     
-    Component/Private/Transform.cpp
+    Engine/Private/Component/Transform.cpp
     Core/Private/Math/Vector.cpp
 )
 
 target_include_directories(Runtime 
-    PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Component/Public"
+    PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Engine/Public"
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Core/Public"
 )
 
