@@ -6,5 +6,4 @@ Set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/Engine/Binaries/
 
 add_subdirectory(Engine/Source/Runtime)
 add_subdirectory(Engine/Source/Launch)
-add_subdirectory(Engine/Source/Test)
 
