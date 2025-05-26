@@ -3,19 +3,19 @@
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D Vector3D::Zero = Vector3D(0.f);
+FVector3D FVector3D::Zero = FVector3D(0.f);
 
-Vector3D Vector3D::One = Vector3D(1.f);
+FVector3D FVector3D::One = FVector3D(1.f);
 
-Vector3D Vector3D::Forward = Vector3D(1.0f, 0.f, 0.f);
+FVector3D FVector3D::Forward = FVector3D(1.0f, 0.f, 0.f);
 
-Vector3D Vector3D::Right = Vector3D(0.0f, 1.f, 0.f);
+FVector3D FVector3D::Right = FVector3D(0.0f, 1.f, 0.f);
 
-Vector3D Vector3D::Up = Vector3D(0.0f, 0.f, 1.f);
+FVector3D FVector3D::Up = FVector3D(0.0f, 0.f, 1.f);
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D::Vector3D(const Vector3D& InVector)
+FVector3D::FVector3D(const FVector3D& InVector)
 {
 	X = InVector.X;
 	Y = InVector.Y;
@@ -24,21 +24,21 @@ Vector3D::Vector3D(const Vector3D& InVector)
 
 //-------------------------------------------------------------------------------------------------
 
-float& Vector3D::operator[](int Index)
+float& FVector3D::operator[](int Index)
 {
 	return ((&X)[Index]);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-const float& Vector3D::operator[](int Index) const
+const float& FVector3D::operator[](int Index) const
 {
 	return ((&X)[Index]);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D& Vector3D::operator*=(float Scalar)
+FVector3D& FVector3D::operator*=(float Scalar)
 {
 	X *= Scalar;
 	Y *= Scalar;
@@ -48,7 +48,7 @@ Vector3D& Vector3D::operator*=(float Scalar)
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D& Vector3D::operator/=(float Scalar)
+FVector3D& FVector3D::operator/=(float Scalar)
 {
 	Scalar = 1.0f / Scalar;
 	X *= Scalar;
@@ -59,7 +59,7 @@ Vector3D& Vector3D::operator/=(float Scalar)
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D& Vector3D::operator+=(const Vector3D& InOther)
+FVector3D& FVector3D::operator+=(const FVector3D& InOther)
 {
 	X += InOther.X;
 	Y += InOther.Y;
@@ -69,7 +69,7 @@ Vector3D& Vector3D::operator+=(const Vector3D& InOther)
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D& Vector3D::operator-=(const Vector3D& InOther)
+FVector3D& FVector3D::operator-=(const FVector3D& InOther)
 {
 	X -= InOther.X;
 	Y -= InOther.Y;
@@ -79,28 +79,28 @@ Vector3D& Vector3D::operator-=(const Vector3D& InOther)
 
 //-------------------------------------------------------------------------------------------------
 
-float Vector3D::Magnitude() const
+float FVector3D::Magnitude() const
 {
 	return Math::Sqrt(X * X + Y * Y + Z * Z);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D Vector3D::Normalize() const
+FVector3D FVector3D::Normalize() const
 {
-	return (Vector3D(*this) / Magnitude());
+	return (FVector3D(*this) / Magnitude());
 }
 
 //-------------------------------------------------------------------------------------------------
 
-float Vector3D::DotProduct(const Vector3D& Other) const
+float FVector3D::DotProduct(const FVector3D& Other) const
 {
 	return *this * Other;
 }
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D Vector3D::CrossProduct(const Vector3D& Other) const
+FVector3D FVector3D::CrossProduct(const FVector3D& Other) const
 {
 	return *this ^ Other;
 }

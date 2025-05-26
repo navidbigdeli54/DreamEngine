@@ -2,7 +2,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-Matrix3D::Matrix3D(const Vector3D& First, const Vector3D& Second, const Vector3D& Third)
+FMatrix3D::FMatrix3D(const FVector3D& First, const FVector3D& Second, const FVector3D& Third)
 {
 	Entries[0][0] = First.X; Entries[0][1] = First.Y; Entries[0][2] = First.Z;
 
@@ -13,7 +13,7 @@ Matrix3D::Matrix3D(const Vector3D& First, const Vector3D& Second, const Vector3D
 
 //-------------------------------------------------------------------------------------------------
 
-Matrix3D::Matrix3D(float M00, float M01, float M02, float M10, float M11, float M12, float M20, float M21, float M22)
+FMatrix3D::FMatrix3D(float M00, float M01, float M02, float M10, float M11, float M12, float M20, float M21, float M22)
 {
 	Entries[0][0] = M00; Entries[0][1] = M01; Entries[0][2] = M02;
 
@@ -24,30 +24,30 @@ Matrix3D::Matrix3D(float M00, float M01, float M02, float M10, float M11, float 
 
 //-------------------------------------------------------------------------------------------------
 
-float& Matrix3D::operator()(int Row, int Column)
+float& FMatrix3D::operator()(int Row, int Column)
 {
 	return Entries[Column][Row];
 }
 
 //-------------------------------------------------------------------------------------------------
 
-const float& Matrix3D::operator()(int Row, int Column) const
+const float& FMatrix3D::operator()(int Row, int Column) const
 {
 	return Entries[Column][Row];
 }
 
 //-------------------------------------------------------------------------------------------------
 
-Vector3D& Matrix3D::operator[](int Index)
+FVector3D& FMatrix3D::operator[](int Index)
 {
-	return *reinterpret_cast<Vector3D*>(Entries[Index]);
+	return *reinterpret_cast<FVector3D*>(Entries[Index]);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-const Vector3D& Matrix3D::operator[](int Index) const
+const FVector3D& FMatrix3D::operator[](int Index) const
 {
-	return *reinterpret_cast<const Vector3D*>(Entries[Index]);
+	return *reinterpret_cast<const FVector3D*>(Entries[Index]);
 }
 
 //-------------------------------------------------------------------------------------------------

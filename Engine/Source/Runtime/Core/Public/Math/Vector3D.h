@@ -4,7 +4,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-struct Vector3D
+struct FVector3D
 {
 
 public:
@@ -17,25 +17,25 @@ public:
 
 public:
 
-	static Vector3D Zero;
+	static FVector3D Zero;
 
-	static Vector3D One;
+	static FVector3D One;
 
-	static Vector3D Forward;
+	static FVector3D Forward;
 
-	static Vector3D Right;
+	static FVector3D Right;
 
-	static Vector3D Up;
+	static FVector3D Up;
 
 public:
 
-	Vector3D() : X(0.f), Y(0.f), Z(0.f) {}
+	FVector3D() : X(0.f), Y(0.f), Z(0.f) {}
 
-	Vector3D(float Value) : X(Value), Y(Value), Z(Value) {}
+	FVector3D(float Value) : X(Value), Y(Value), Z(Value) {}
 
-	Vector3D(float InX, float InY, float InZ) : X(InX), Y(InY), Z(InZ) {}
+	FVector3D(float InX, float InY, float InZ) : X(InX), Y(InY), Z(InZ) {}
 
-	Vector3D(const Vector3D& InVector);
+	FVector3D(const FVector3D& InVector);
 
 public:
 
@@ -43,67 +43,67 @@ public:
 
 	const float& operator [](int Index) const;
 
-	Vector3D& operator *=(float Scalar);
+	FVector3D& operator *=(float Scalar);
 
-	Vector3D& operator /=(float Scalar);
+	FVector3D& operator /=(float Scalar);
 
-	Vector3D& operator +=(const Vector3D& InOther);
+	FVector3D& operator +=(const FVector3D& InOther);
 
-	Vector3D& operator -=(const Vector3D& InOther);
+	FVector3D& operator -=(const FVector3D& InOther);
 
 public:
 
 	float Magnitude() const;
 
-	Vector3D Normalize() const;
+	FVector3D Normalize() const;
 
-	float DotProduct(const Vector3D& Other) const;
+	float DotProduct(const FVector3D& Other) const;
 
-	Vector3D CrossProduct(const Vector3D& Other) const;
+	FVector3D CrossProduct(const FVector3D& Other) const;
 };
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D operator*(const Vector3D& Vector, float Scalar)
+FORCEINLINE FVector3D operator*(const FVector3D& Vector, float Scalar)
 {
-	return Vector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
+	return FVector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D operator/(const Vector3D& Vector, float Scalar)
+FORCEINLINE FVector3D operator/(const FVector3D& Vector, float Scalar)
 {
 	Scalar = 1.0f / Scalar;
 
-	return Vector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
+	return FVector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D operator+(const Vector3D& Left, const Vector3D& Right)
+FORCEINLINE FVector3D operator+(const FVector3D& Left, const FVector3D& Right)
 {
-	return Vector3D(Left.X + Right.X, Left.Y + Right.Y, Left.Z + Right.Z);
+	return FVector3D(Left.X + Right.X, Left.Y + Right.Y, Left.Z + Right.Z);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D operator-(const Vector3D& Left, const Vector3D& Right)
+FORCEINLINE FVector3D operator-(const FVector3D& Left, const FVector3D& Right)
 {
-	return Vector3D(Left.X - Right.X, Left.Y - Right.Y, Left.Z - Right.Z);
+	return FVector3D(Left.X - Right.X, Left.Y - Right.Y, Left.Z - Right.Z);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE float operator*(const Vector3D& Left, const Vector3D& Right)
+FORCEINLINE float operator*(const FVector3D& Left, const FVector3D& Right)
 {
 	return Left.X * Right.X + Left.Y * Right.Y + Left.Z * Right.Z;
 }
 
 //-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D operator^(const Vector3D& Left, const Vector3D& Right)
+FORCEINLINE FVector3D operator^(const FVector3D& Left, const FVector3D& Right)
 {
-	return Vector3D(
+	return FVector3D(
 		/*X*/ Left.Y * Right.Z - Left.Z * Right.Y,
 		/*Y*/ Left.Z * Right.X - Left.X * Right.Z,
 		/*Z*/ Left.X * Right.Y - Left.Y * Right.X
