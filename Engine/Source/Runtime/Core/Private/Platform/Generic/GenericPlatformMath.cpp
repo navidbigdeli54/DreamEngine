@@ -5,7 +5,7 @@
 //-------------------------------------------------------------------------------------------------
 
 template<typename T>
-T GenericPlatformMath::Abs(const T Value)
+T FGenericPlatformMath::Abs(const T Value)
 {
 	return Value < 0 ? Value * -1 : Value;
 }
@@ -13,30 +13,30 @@ T GenericPlatformMath::Abs(const T Value)
 //-------------------------------------------------------------------------------------------------
 
 template<>
-float GenericPlatformMath::Abs(const float Value)
+float FGenericPlatformMath::Abs(const float Value)
 {
 	return fabsf(Value);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-float GenericPlatformMath::Sqrt(const float Value)
+float FGenericPlatformMath::Sqrt(const float Value)
 {
 	return sqrtf(Value);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-float GenericPlatformMath::Square(const float Value)
+float FGenericPlatformMath::Square(const float Value)
 {
 	return Value * Value;
 }
 
 //-------------------------------------------------------------------------------------------------
 
-bool GenericPlatformMath::AlmostEqual(const float Left, const float Right)
+bool FGenericPlatformMath::AlmostEqual(const float Left, const float Right)
 {
-	return GenericPlatformMath::Abs(Left - Right) < NEAR_ZERO_NUMBER;
+	return FGenericPlatformMath::Abs(Left - Right) < NEAR_ZERO_NUMBER;
 }
 
 //-------------------------------------------------------------------------------------------------

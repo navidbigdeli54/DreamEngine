@@ -3,10 +3,10 @@
 #ifdef _MSC_VER
 #include "Platform/Generic/GenericPlatformMath.h"
 
-struct WindowsPlatformMath : public GenericPlatformMath
+struct FWindowsPlatformMath : public FGenericPlatformMath
 {
     
 };
 
-typedef WindowsPlatformMath PlatformMath;
+typedef FWindowsPlatformMath FPlatformMath;
 #endif

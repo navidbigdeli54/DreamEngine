@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <cstddef>
 
-struct GenericPlatformTypes
+struct FGenericPlatformTypes
 {
 	typedef uint8_t UInt8;
 	typedef uint16_t UInt16;

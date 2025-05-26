@@ -3,4 +3,4 @@
 #include "Linux/LinuxPlatformMath.h"
 #include "Windows/WindowsPlatformMath.h"
 
-typedef PlatformMath Math;
+typedef FPlatformMath FMath;

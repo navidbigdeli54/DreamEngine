@@ -3,7 +3,7 @@
 #define NEAR_ZERO_NUMBER (1e-5f)
 #define FLOAT_PRECESION_THRESHOLD 0.01f
 
-struct GenericPlatformMath
+struct FGenericPlatformMath
 {
 public:
 

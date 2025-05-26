@@ -3,7 +3,7 @@
 #include "Platform/Generic/GenericPlatformTypes.h"
 
 #ifdef __GNUC__
-struct LinuxPlatformTypes : public GenericPlatformTypes
+struct FLinuxPlatformTypes : public FGenericPlatformTypes
 {
     typedef unsigned char UInt8;
     typedef unsigned short int UInt16;
@@ -16,6 +16,6 @@ struct LinuxPlatformTypes : public GenericPlatformTypes
     typedef signed long int Int64;
 };
 
-typedef LinuxPlatformTypes PlatformTypes;
+typedef FLinuxPlatformTypes FPlatformTypes;
 
 #endif

@@ -3,10 +3,10 @@
 #ifdef __GNUC__
 #include "Platform/Generic/GenericPlatformMath.h"
 
-struct LinuxPlatformMath : public GenericPlatformMath
+struct FLinuxPlatformMath : public GenericPlatformMath
 {
     
 };
 
-typedef LinuxPlatformMath PlatformMath;
+typedef FLinuxPlatformMath PlatformMath;
 #endif

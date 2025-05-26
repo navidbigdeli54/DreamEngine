@@ -81,7 +81,7 @@ FVector3D& FVector3D::operator-=(const FVector3D& InOther)
 
 float FVector3D::Magnitude() const
 {
-	return Math::Sqrt(X * X + Y * Y + Z * Z);
+	return FMath::Sqrt(X * X + Y * Y + Z * Z);
 }
 
 //-------------------------------------------------------------------------------------------------

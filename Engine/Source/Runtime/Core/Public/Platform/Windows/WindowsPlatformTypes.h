@@ -4,7 +4,7 @@
 
 #include "Platform/Generic/GenericPlatformTypes.h"
 
-struct WindowsPlatformTypes : public GenericPlatformTypes
+struct FWindowsPlatformTypes : public FGenericPlatformTypes
 {
     typedef unsigned __int8 UInt8;
     typedef unsigned __int16 UInt16;
@@ -17,6 +17,6 @@ struct WindowsPlatformTypes : public GenericPlatformTypes
     typedef signed __int64 Int64;
 };
 
-typedef WindowsPlatformTypes PlatformTypes;
+typedef FWindowsPlatformTypes FPlatformTypes;
 
 #endif
