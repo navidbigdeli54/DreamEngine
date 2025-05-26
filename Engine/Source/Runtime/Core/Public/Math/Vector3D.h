@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Platform/Platform.h"
-#include "Platform/PlatformMath.h"
+
+//-------------------------------------------------------------------------------------------------
 
 struct Vector3D
 {
+
 public:
+
 	float X;
 
 	float Y;
@@ -13,218 +16,98 @@ public:
 	float Z;
 
 public:
-	static const Vector3D Zero;
 
-	static const Vector3D One;
+	static Vector3D Zero;
 
-	static const Vector3D Up;
+	static Vector3D One;
 
-	static const Vector3D Forward;
+	static Vector3D Forward;
 
-	static const Vector3D Right;
+	static Vector3D Right;
 
-public:
-	FORCEINLINE Vector3D();
-
-	FORCEINLINE explicit Vector3D(float f);
-
-	FORCEINLINE Vector3D(float x, float y, float z);
-
-	FORCEINLINE Vector3D(const Vector3D &vector);
+	static Vector3D Up;
 
 public:
-	FORCEINLINE Vector3D operator^(const Vector3D &rhs) const;
 
-	FORCEINLINE float operator*(const Vector3D &rhs) const;
+	Vector3D() : X(0.f), Y(0.f), Z(0.f) {}
 
-	FORCEINLINE Vector3D operator*(const float scale) const;
+	Vector3D(float Value) : X(Value), Y(Value), Z(Value) {}
 
-	FORCEINLINE Vector3D operator*=(const float scale);
+	Vector3D(float InX, float InY, float InZ) : X(InX), Y(InY), Z(InZ) {}
 
-	FORCEINLINE Vector3D operator/(const float scale) const;
-
-	FORCEINLINE Vector3D operator/=(const float scale);
-
-	FORCEINLINE bool operator==(const Vector3D &rhs) const;
-
-	FORCEINLINE bool operator!=(const Vector3D &rhs) const;
+	Vector3D(const Vector3D& InVector);
 
 public:
-	FORCEINLINE void Set(float x, float y, float z);
 
-	FORCEINLINE float Magnitude() const;
+	float& operator [](int Index);
 
-	FORCEINLINE float MagnitudeSquared() const;
+	const float& operator [](int Index) const;
 
-	FORCEINLINE bool IsZero() const;
+	Vector3D& operator *=(float Scalar);
 
-	FORCEINLINE bool IsNearlyZero(float tolerance = NEAR_ZERO_NUMBER) const;
+	Vector3D& operator /=(float Scalar);
 
-	FORCEINLINE bool Normalize(float tolerance = NEAR_ZERO_NUMBER);
+	Vector3D& operator +=(const Vector3D& InOther);
 
-	FORCEINLINE bool IsNormalize() const;
-
-	FORCEINLINE Vector3D GetUnsafeNormal() const;
-
-	FORCEINLINE Vector3D GetSafeNormal(float tolerance = NEAR_ZERO_NUMBER) const;
+	Vector3D& operator -=(const Vector3D& InOther);
 
 public:
-	FORCEINLINE static Vector3D CrossProduct(const Vector3D &a, const Vector3D &b);
 
-	FORCEINLINE static float DotProduct(const Vector3D &a, const Vector3D &b);
+	float Magnitude() const;
 
-	FORCEINLINE static float Distance(const Vector3D &a, const Vector3D &b);
+	Vector3D Normalize() const;
 
-	FORCEINLINE static float DistanceSquared(const Vector3D &a, const Vector3D &b);
+	float DotProduct(const Vector3D& Other) const;
+
+	Vector3D CrossProduct(const Vector3D& Other) const;
 };
 
-FORCEINLINE Vector3D::Vector3D() : X(0), Y(0), Z(0) {}
+//-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D::Vector3D(float f) : X(f), Y(f), Z(f) {}
+FORCEINLINE Vector3D operator*(const Vector3D& Vector, float Scalar)
+{
+	return Vector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
+}
 
-FORCEINLINE Vector3D::Vector3D(float x, float y, float z) : X(x), Y(y), Z(z) {}
+//-------------------------------------------------------------------------------------------------
 
-FORCEINLINE Vector3D::Vector3D(const Vector3D &vector) : X(vector.X), Y(vector.Y), Z(vector.Z) {}
+FORCEINLINE Vector3D operator/(const Vector3D& Vector, float Scalar)
+{
+	Scalar = 1.0f / Scalar;
 
-FORCEINLINE Vector3D Vector3D::operator^(const Vector3D &rhs) const
+	return Vector3D(Vector.X * Scalar, Vector.Y * Scalar, Vector.Z * Scalar);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FORCEINLINE Vector3D operator+(const Vector3D& Left, const Vector3D& Right)
+{
+	return Vector3D(Left.X + Right.X, Left.Y + Right.Y, Left.Z + Right.Z);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FORCEINLINE Vector3D operator-(const Vector3D& Left, const Vector3D& Right)
+{
+	return Vector3D(Left.X - Right.X, Left.Y - Right.Y, Left.Z - Right.Z);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FORCEINLINE float operator*(const Vector3D& Left, const Vector3D& Right)
+{
+	return Left.X * Right.X + Left.Y * Right.Y + Left.Z * Right.Z;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FORCEINLINE Vector3D operator^(const Vector3D& Left, const Vector3D& Right)
 {
 	return Vector3D(
-		Y * rhs.Z - Z * rhs.Y,
-		Z * rhs.X - X * rhs.Z,
-		X * rhs.Y - Y * rhs.X);
+		/*X*/ Left.Y * Right.Z - Left.Z * Right.Y,
+		/*Y*/ Left.Z * Right.X - Left.X - Right.Z,
+		/*Z*/ Left.X * Right.Y - Left.Y * Right.X
+	);
 }
 
-FORCEINLINE float Vector3D::operator*(const Vector3D &rhs) const
-{
-	return X * rhs.X + Y * rhs.Y + Z * rhs.Z;
-}
-
-FORCEINLINE Vector3D Vector3D::operator*(const float scale) const
-{
-	return Vector3D(X * scale, Y * scale, Z * scale);
-}
-
-FORCEINLINE Vector3D Vector3D::operator*=(const float scale)
-{
-	X *= scale;
-	Y *= scale;
-	Z *= scale;
-	return *this;
-}
-
-FORCEINLINE Vector3D Vector3D::operator/(const float scale) const
-{
-	const float reversedScale = 1.f / scale;
-
-	return Vector3D(X * reversedScale, Y * reversedScale, Z * reversedScale);
-}
-
-FORCEINLINE Vector3D Vector3D::operator/=(const float scale)
-{
-	const float reversedScale = 1.f / scale;
-
-	X *= reversedScale;
-	Y *= reversedScale;
-	Z *= reversedScale;
-
-	return *this;
-}
-
-FORCEINLINE bool Vector3D::operator==(const Vector3D &rhs) const
-{
-	return X == rhs.X && Y == rhs.Y && Z == rhs.Z;
-}
-
-FORCEINLINE bool Vector3D::operator!=(const Vector3D &rhs) const
-{
-	return X != rhs.X || Y != rhs.Y || Z != rhs.Z;
-}
-
-FORCEINLINE void Vector3D::Set(float inX, float inY, float inZ)
-{
-	X = inX;
-	Y = inY;
-	Z = inZ;
-}
-
-FORCEINLINE float Vector3D::Magnitude() const
-{
-	return Math::Sqrt(MagnitudeSquared());
-}
-
-FORCEINLINE float Vector3D::MagnitudeSquared() const
-{
-	return X * X + Y * Y + Z * Z;
-}
-
-FORCEINLINE bool Vector3D::IsZero() const
-{
-	return X == 0 && Y == 0 && Z == 0;
-}
-
-FORCEINLINE bool Vector3D::IsNearlyZero(float tolerance) const
-{
-	return Math::Abs(X) <= tolerance && Math::Abs(Y) <= tolerance && Math::Abs(Z) <= tolerance;
-}
-
-FORCEINLINE bool Vector3D::Normalize(float tolerance)
-{
-	float sqrtSize = MagnitudeSquared();
-
-	if (sqrtSize > tolerance)
-	{
-		const float reversedScale = 1.f / Math::Sqrt(sqrtSize);
-
-		*this = *this / reversedScale;
-
-		return true;
-	}
-
-	return false;
-}
-
-FORCEINLINE bool Vector3D::IsNormalize() const
-{
-	return Math::Abs(1.f - MagnitudeSquared()) < FLOAT_PRECESION_THRESHOLD;
-}
-
-FORCEINLINE Vector3D Vector3D::GetUnsafeNormal() const
-{
-	const float reversedScale = 1.f / Magnitude();
-
-	return *this / reversedScale;
-}
-
-FORCEINLINE Vector3D Vector3D::GetSafeNormal(float tolerance) const
-{
-	const float sqrtSize = MagnitudeSquared();
-
-	if (sqrtSize == 1)
-		return *this;
-	else if (sqrtSize < tolerance)
-		return Zero;
-
-	const float reversedScale = 1.f / Math::Sqrt(sqrtSize);
-
-	return *this / reversedScale;
-}
-
-FORCEINLINE Vector3D Vector3D::CrossProduct(const Vector3D &a, const Vector3D &b)
-{
-	return a ^ b;
-}
-
-FORCEINLINE float Vector3D::DotProduct(const Vector3D &a, const Vector3D &b)
-{
-	return a * b;
-}
-
-FORCEINLINE float Vector3D::Distance(const Vector3D &a, const Vector3D &b)
-{
-	return Math::Sqrt(DistanceSquared(a, b));
-}
-
-FORCEINLINE float Vector3D::DistanceSquared(const Vector3D &a, const Vector3D &b)
-{
-	return Math::Square(b.X - a.X) + Math::Square(b.Y - a.Y) + Math::Sqrt(b.Z - a.Z);
-}
+//-------------------------------------------------------------------------------------------------
