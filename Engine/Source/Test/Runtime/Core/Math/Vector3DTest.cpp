@@ -1,282 +1,233 @@
-//#include <catch2/catch_test_macros.hpp>
-//#include "Math/Vector3D.h"
-//
-//TEST_CASE("Vector3D::Zero", "[Vector3D]")
-//{
-//    Vector3D vec3 = Vector3D::Zero;
-//    REQUIRE(vec3.X == 0);
-//    REQUIRE(vec3.Y == 0);
-//    REQUIRE(vec3.Z == 0);
-//}
-//
-//TEST_CASE("Vector3D::One", "[Vector3D]")
-//{
-//    Vector3D vec3 = Vector3D::One;
-//    REQUIRE(vec3.X == 1);
-//    REQUIRE(vec3.Y == 1);
-//    REQUIRE(vec3.Z == 1);
-//}
-//
-//TEST_CASE("Vector3D::Up", "[Vector3D]")
-//{
-//    Vector3D vec3 = Vector3D::Up;
-//    REQUIRE(vec3.X == 0);
-//    REQUIRE(vec3.Y == 1);
-//    REQUIRE(vec3.Z == 0);
-//}
-//
-//TEST_CASE("Vector3D::Forward", "[Vector3D]")
-//{
-//    Vector3D vec3 = Vector3D::Forward;
-//    REQUIRE(vec3.X == 0);
-//    REQUIRE(vec3.Y == 0);
-//    REQUIRE(vec3.Z == 1);
-//}
-//
-//TEST_CASE("Vector3D::Right", "[Vector3D]")
-//{
-//    Vector3D vec3 = Vector3D::Right;
-//    REQUIRE(vec3.X == 1);
-//    REQUIRE(vec3.Y == 0);
-//    REQUIRE(vec3.Z == 0);
-//}
-//
-//TEST_CASE("Vector3D::Vector3D(float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float random = rand() % 100;
-//    Vector3D vec3(random);
-//    REQUIRE(vec3.X == random);
-//    REQUIRE(vec3.Y == random);
-//    REQUIRE(vec3.Z == random);
-//}
-//
-//TEST_CASE("Vector3D::Vector3D(float, float, float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float randX = rand() % 100;
-//    float randY = rand() % 100;
-//    float randZ = rand() % 100;
-//
-//    Vector3D vec3(randX, randY, randZ);
-//    REQUIRE(vec3.X == randX);
-//    REQUIRE(vec3.Y == randY);
-//    REQUIRE(vec3.Z == randZ);
-//}
-//
-//TEST_CASE("Vector3D::Vector3D(&Vector3D)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float randX = rand() % 100;
-//    float randY = rand() % 100;
-//    float randZ = rand() % 100;
-//
-//    Vector3D vec3(randX, randY, randZ);
-//
-//    Vector3D otherVec3(vec3);
-//
-//    REQUIRE(otherVec3.X == randX);
-//    REQUIRE(otherVec3.Y == randY);
-//    REQUIRE(otherVec3.Z == randZ);
-//}
-//
-//TEST_CASE("Vector3D::CrossProduct(&Vector3D)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float vec1RandX = rand() % 100;
-//    float vec1RandY = rand() % 100;
-//    float vec1RandZ = rand() % 100;
-//    Vector3D vec1(vec1RandX, vec1RandY, vec1RandZ);
-//
-//    float vec2RandX = rand() % 100;
-//    float vec2RandY = rand() % 100;
-//    float vec2RandZ = rand() % 100;
-//
-//    Vector3D vec2(vec2RandX, vec2RandY, vec2RandZ);
-//
-//    Vector3D crossProduct = vec1 ^ vec2;
-//
-//    REQUIRE(Math::AlmostEqual(crossProduct.X, vec1.Y * vec2.Z - vec1.Z * vec2.Y));
-//    REQUIRE(Math::AlmostEqual(crossProduct.Y, vec1.Z * vec2.X - vec1.X * vec2.Z));
-//    REQUIRE(Math::AlmostEqual(crossProduct.Z, vec1.X * vec2.Y - vec1.Y * vec2.X));
-//}
-//
-////TEST_CASE("Vector3D::DotProduct(&Vector3D)", "[Vector3D]")
-////{
-////    srand(time(NULL));
-////    float vec1RandX = rand() % 100;
-////    float vec1RandY = rand() % 100;
-////    float vec1RandZ = rand() % 100;
-////    Vector3D vec1(vec1RandX, vec1RandY, vec1RandZ);
-////
-////    float vec2RandX = rand() % 100;
-////    float vec2RandY = rand() % 100;
-////    float vec2RandZ = rand() % 100;
-////
-////    Vector3D vec2(vec2RandX, vec2RandY, vec2RandZ);
-////
-////    float dotProduct = vec1 * vec2;
-////
-////    REQUIRE(Math::AlmostEqual(dotProduct, vec1.X * vec2.X + vec1.Y * vec2.Y + vec1.Z * vec2.Z));
-////}
-//
-//TEST_CASE("Vector3D::Scale(float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float vec1RandX = rand() % 100;
-//    float vec1RandY = rand() % 100;
-//    float vec1RandZ = rand() % 100;
-//    Vector3D vec3(vec1RandX, vec1RandY, vec1RandZ);
-//
-//    float randScale = rand() % 100;
-//
-//    Vector3D scaledVec3 = vec3 * randScale;
-//
-//    REQUIRE(Math::AlmostEqual(scaledVec3.X, vec3.X * randScale));
-//    REQUIRE(Math::AlmostEqual(scaledVec3.Y, vec3.Y * randScale));
-//    REQUIRE(Math::AlmostEqual(scaledVec3.Z, vec3.Z * randScale));
-//}
-//
-//TEST_CASE("Vector3D::ScaleAndAssign(float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float vec1RandX = rand() % 100;
-//    float vec1RandY = rand() % 100;
-//    float vec1RandZ = rand() % 100;
-//    Vector3D vec3(vec1RandX, vec1RandY, vec1RandZ);
-//
-//    float randScale = rand() % 100;
-//
-//    Vector3D temp(vec3);
-//    temp *= randScale;
-//
-//    REQUIRE(Math::AlmostEqual(temp.X, vec3.X * randScale));
-//    REQUIRE(Math::AlmostEqual(temp.Y, vec3.Y * randScale));
-//    REQUIRE(Math::AlmostEqual(temp.Z, vec3.Z * randScale));
-//}
-//
-//TEST_CASE("Vector3D::Divide(float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float vec1RandX = rand() % 100;
-//    float vec1RandY = rand() % 100;
-//    float vec1RandZ = rand() % 100;
-//    Vector3D vec3(vec1RandX, vec1RandY, vec1RandZ);
-//
-//    float randScale = rand() % 100;
-//
-//    Vector3D scaledVec3 = vec3 / randScale;
-//
-//    REQUIRE(Math::AlmostEqual(scaledVec3.X, vec3.X / randScale));
-//    REQUIRE(Math::AlmostEqual(scaledVec3.Y, vec3.Y / randScale));
-//    REQUIRE(Math::AlmostEqual(scaledVec3.Z, vec3.Z / randScale));
-//}
-//
-//TEST_CASE("Vector3D::DivideAndAssign(float)", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float vec1RandX = rand() % 100;
-//    float vec1RandY = rand() % 100;
-//    float vec1RandZ = rand() % 100;
-//    Vector3D vec3(vec1RandX, vec1RandY, vec1RandZ);
-//
-//    float randScale = rand() % 100;
-//
-//    Vector3D temp(vec3);
-//    temp /= randScale;
-//
-//    REQUIRE(Math::AlmostEqual(temp.X, vec3.X / randScale));
-//    REQUIRE(Math::AlmostEqual(temp.Y, vec3.Y / randScale));
-//    REQUIRE(Math::AlmostEqual(temp.Z, vec3.Z / randScale));
-//}
-//
-////TEST_CASE("Vector3D::Equal(&Vector3D)", "[Vector3D]")
-////{
-////    srand(time(NULL));
-////    float vec1RandX = rand() % 100;
-////    float vec1RandY = rand() % 100;
-////    float vec1RandZ = rand() % 100;
-////    Vector3D vec1(vec1RandX, vec1RandY, vec1RandZ);
-////
-////    Vector3D vec2(vec1RandX, vec1RandY, vec1RandZ);
-////
-////    REQUIRE(vec1 == vec2);
-////}
-//
-////TEST_CASE("Vector3D::NotEqual(&Vector3D)", "[Vector3D]")
-////{
-////    srand(time(NULL));
-////    float vec1RandX = rand() % 100;
-////    float vec1RandY = rand() % 100;
-////    float vec1RandZ = rand() % 100;
-////    Vector3D vec1(vec1RandX, vec1RandY, vec1RandZ);
-////
-////    Vector3D vec2(vec1RandX + rand() % 100, vec1RandY + rand() % 100, vec1RandZ + rand() % 100);
-////
-////    REQUIRE(vec1 != vec2);
-////}
-//
-////TEST_CASE("Vector3D::Set", "[Vector3D]")
-////{
-////    Vector3D vec3 = Vector3D::Zero;
-////
-////    srand(time(NULL));
-////    float randX = rand() % 100;
-////    float randY = rand() % 100;
-////    float randZ = rand() % 100;
-////
-////    vec3.Set(randX, randY, randZ);
-////    REQUIRE(Math::AlmostEqual(vec3.X, randX));
-////    REQUIRE(Math::AlmostEqual(vec3.Y, randY));
-////    REQUIRE(Math::AlmostEqual(vec3.Z, randZ));
-////}
-//
-//TEST_CASE("Vector3D::Magnitude", "[Vector3D]")
-//{
-//    srand(time(NULL));
-//    float randX = rand() % 100;
-//    float randY = rand() % 100;
-//    float randZ = rand() % 100;
-//    Vector3D vec3(randX, randY, randZ);
-//    REQUIRE(Math::AlmostEqual(vec3.Magnitude(), Math::Sqrt(randX * randX + randY * randY + randZ * randZ)));
-//}
-//
-////TEST_CASE("Vector3D::MagnitudeSquared", "[Vector3D]")
-////{
-////    srand(time(NULL));
-////    float randX = rand() % 100;
-////    float randY = rand() % 100;
-////    float randZ = rand() % 100;
-////    Vector3D vec3(randX, randY, randZ);
-////    REQUIRE(Math::AlmostEqual(vec3.MagnitudeSquared(), randX * randX + randY * randY + randZ * randZ));
-////}
-//
-////TEST_CASE("Vector3D::IsZero", "[Vector3D]")
-////{
-////    Vector3D vec3 = Vector3D::Zero;
-////    REQUIRE(vec3.IsZero());
-////}
-////
-////TEST_CASE("Vector3D::IsNotZero", "[Vector3D]")
-////{
-////    Vector3D vec3 = Vector3D::One;
-////    REQUIRE_FALSE(vec3.IsZero());
-////}
-////
-////TEST_CASE("Vector3D::IsNearlyZero", "[Vector3D]")
-////{
-////    Vector3D vec3 = Vector3D::Zero;
-////    REQUIRE(vec3.IsNearlyZero());
-////}
-////
-////TEST_CASE("Vector3D::IsNearZeroNumberNearlyZero", "[Vector3D]")
-////{
-////    Vector3D vec3(NEAR_ZERO_NUMBER, NEAR_ZERO_NUMBER, NEAR_ZERO_NUMBER);
-////    REQUIRE(vec3.IsNearlyZero());
-////}
-////
-////TEST_CASE("Vector3D::IsNotNearlyZero", "[Vector3D]")
-////{
-////    Vector3D vec3 = Vector3D::One;
-////    REQUIRE_FALSE(vec3.IsNearlyZero());
-////}
+#include "Math/Vector3D.h"
+#include "Platform/PlatformMath.h"
+#include <catch2/catch_test_macros.hpp>
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Zero", "[Vector3D]")
+{
+	Vector3D Vector = Vector3D::Zero;
+	REQUIRE(Vector.X == 0);
+	REQUIRE(Vector.Y == 0);
+	REQUIRE(Vector.Z == 0);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::One", "[Vector3D]")
+{
+	Vector3D Vector = Vector3D::One;
+	REQUIRE(Vector.X == 1);
+	REQUIRE(Vector.Y == 1);
+	REQUIRE(Vector.Z == 1);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Up", "[Vector3D]")
+{
+	Vector3D Vector = Vector3D::Up;
+	REQUIRE(Vector.X == 0.f);
+	REQUIRE(Vector.Y == 0.f);
+	REQUIRE(Vector.Z == 1.f);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Forward", "[Vector3D]")
+{
+	Vector3D Vector = Vector3D::Forward;
+	REQUIRE(Vector.X == 1.f);
+	REQUIRE(Vector.Y == 0.f);
+	REQUIRE(Vector.Z == 0.f);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Right", "[Vector3D]")
+{
+	Vector3D Vector = Vector3D::Right;
+	REQUIRE(Vector.X == 0.f);
+	REQUIRE(Vector.Y == 1.f);
+	REQUIRE(Vector.Z == 0.f);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Vector3D(float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float Random = static_cast<float>(rand());
+	Vector3D Vector(Random);
+	REQUIRE(Vector.X == Random);
+	REQUIRE(Vector.Y == Random);
+	REQUIRE(Vector.Z == Random);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Vector3D(float, float, float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+
+	Vector3D Vector(RandX, RandY, RandZ);
+	REQUIRE(Vector.X == RandX);
+	REQUIRE(Vector.Y == RandY);
+	REQUIRE(Vector.Z == RandZ);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Vector3D(&Vector3D)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+
+	Vector3D Vector(RandX, RandY, RandZ);
+
+	Vector3D CopyVector(Vector);
+
+	REQUIRE(CopyVector.X == RandX);
+	REQUIRE(CopyVector.Y == RandY);
+	REQUIRE(CopyVector.Z == RandZ);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::CrossProduct(&Vector3D)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float Vector1RandX = static_cast<float>(rand());
+	float Vector1RandY = static_cast<float>(rand());
+	float Vector1RandZ = static_cast<float>(rand());
+	Vector3D Vector1(Vector1RandX, Vector1RandY, Vector1RandZ);
+
+	float Vector2RandX = static_cast<float>(rand());
+	float Vector2RandY = static_cast<float>(rand());
+	float Vector2RandZ = static_cast<float>(rand());
+	Vector3D Vector2(Vector2RandX, Vector2RandY, Vector2RandZ);
+
+	Vector3D CrossProduct = Vector1 ^ Vector2;
+
+	REQUIRE(Math::AlmostEqual(CrossProduct.X, Vector1.Y * Vector2.Z - Vector1.Z * Vector2.Y));
+	REQUIRE(Math::AlmostEqual(CrossProduct.Y, Vector1.Z * Vector2.X - Vector1.X * Vector2.Z));
+	REQUIRE(Math::AlmostEqual(CrossProduct.Z, Vector1.X * Vector2.Y - Vector1.Y * Vector2.X));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::DotProduct(&Vector3D)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float Vector1RandX = static_cast<float>(rand());
+	float Vector1RandY = static_cast<float>(rand());
+	float Vector1RandZ = static_cast<float>(rand());
+	Vector3D Vector1(Vector1RandX, Vector1RandY, Vector1RandZ);
+
+	float Vector2RandX = static_cast<float>(rand());
+	float Vector2RandY = static_cast<float>(rand());
+	float Vector2RandZ = static_cast<float>(rand());
+
+	Vector3D Vector2(Vector2RandX, Vector2RandY, Vector2RandZ);
+
+	float DotProduct = Vector1 * Vector2;
+
+	REQUIRE(Math::AlmostEqual(DotProduct, Vector1.X * Vector2.X + Vector1.Y * Vector2.Y + Vector1.Z * Vector2.Z));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Scale(float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+	Vector3D Vector(RandX, RandY, RandZ);
+
+	float RandScale = static_cast<float>(rand());
+
+	Vector3D ScaledVector = Vector * RandScale;
+
+	REQUIRE(Math::AlmostEqual(ScaledVector.X, Vector.X * RandScale));
+	REQUIRE(Math::AlmostEqual(ScaledVector.Y, Vector.Y * RandScale));
+	REQUIRE(Math::AlmostEqual(ScaledVector.Z, Vector.Z * RandScale));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::ScaleAndAssign(float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+	Vector3D Vector(RandX, RandY, RandZ);
+
+	Vector3D CopyVector(Vector);
+
+	float RandScale = static_cast<float>(rand());
+	CopyVector *= RandScale;
+
+	REQUIRE(Math::AlmostEqual(CopyVector.X, Vector.X * RandScale));
+	REQUIRE(Math::AlmostEqual(CopyVector.Y, Vector.Y * RandScale));
+	REQUIRE(Math::AlmostEqual(CopyVector.Z, Vector.Z * RandScale));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Divide(float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+
+	Vector3D Vector(RandX, RandY, RandZ);
+
+	float RandScale = static_cast<float>(rand());
+	Vector3D ScaledVector = Vector / RandScale;
+
+	REQUIRE(Math::AlmostEqual(ScaledVector.X, Vector.X / RandScale));
+	REQUIRE(Math::AlmostEqual(ScaledVector.Y, Vector.Y / RandScale));
+	REQUIRE(Math::AlmostEqual(ScaledVector.Z, Vector.Z / RandScale));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::DivideAndAssign(float)", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+	Vector3D Vector(RandX, RandY, RandZ);
+
+	Vector3D CopyVector(Vector);
+
+	float RandScale = static_cast<float>(rand());
+	CopyVector /= RandScale;
+
+	REQUIRE(Math::AlmostEqual(CopyVector.X, Vector.X / RandScale));
+	REQUIRE(Math::AlmostEqual(CopyVector.Y, Vector.Y / RandScale));
+	REQUIRE(Math::AlmostEqual(CopyVector.Z, Vector.Z / RandScale));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Magnitude", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float RandX = static_cast<float>(rand());
+	float RandY = static_cast<float>(rand());
+	float RandZ = static_cast<float>(rand());
+	Vector3D Vectpr(RandX, RandY, RandZ);
+	REQUIRE(Math::AlmostEqual(Vectpr.Magnitude(), Math::Sqrt(RandX * RandX + RandY * RandY + RandZ * RandZ)));
+}
+
+//-------------------------------------------------------------------------------------------------

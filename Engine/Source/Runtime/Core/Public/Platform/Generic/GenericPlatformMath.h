@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Platform/Platform.h"
-
 #define NEAR_ZERO_NUMBER (1e-5f)
 #define FLOAT_PRECESION_THRESHOLD 0.01f
 
@@ -10,11 +8,11 @@ struct GenericPlatformMath
 public:
 
 	template<typename T>
-	FORCEINLINE static T Abs(const T value);
+	static T Abs(const T Value);
 
-	FORCEINLINE static float Sqrt(const float value);
+	static float Sqrt(const float Value);
 
-	FORCEINLINE static float Square(const float value);
+	static float Square(const float Value);
 
-	FORCEINLINE static bool AlmostEqual(const float lhs, const float rhs);
+	static bool AlmostEqual(const float Left, const float Right);
 };

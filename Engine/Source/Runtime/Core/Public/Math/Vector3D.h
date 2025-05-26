@@ -105,7 +105,7 @@ FORCEINLINE Vector3D operator^(const Vector3D& Left, const Vector3D& Right)
 {
 	return Vector3D(
 		/*X*/ Left.Y * Right.Z - Left.Z * Right.Y,
-		/*Y*/ Left.Z * Right.X - Left.X - Right.Z,
+		/*Y*/ Left.Z * Right.X - Left.X * Right.Z,
 		/*Z*/ Left.X * Right.Y - Left.Y * Right.X
 	);
 }
