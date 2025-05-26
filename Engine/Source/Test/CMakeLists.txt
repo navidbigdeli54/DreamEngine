@@ -9,13 +9,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 add_executable(Test
-  Test.cpp
-  
-  #Platform
-  "Runtime/Core/Platform/PlatformTypesTest.cpp"
-
-  #Math
-  "Runtime/Core/Math/Vector3DTest.cpp"
+	Test.cpp
+	
+	#Platform
+	"Runtime/Core/Platform/PlatformTypesTest.cpp"
+	
+	#Math
+	"Runtime/Core/Math/Vector3DTest.cpp"
+	"Runtime/Core/Math/Matrix3DTest.cpp"
 )
 
 target_link_libraries(Test PRIVATE Catch2::Catch2WithMain)
