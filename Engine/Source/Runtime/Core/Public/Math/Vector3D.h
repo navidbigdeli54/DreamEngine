@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Platform/Platform.h"
 
@@ -60,6 +60,10 @@ public:
 	float DotProduct(const FVector3D& Other) const;
 
 	FVector3D CrossProduct(const FVector3D& Other) const;
+
+	FVector3D Project(const FVector3D& Onto) const;
+
+	FVector3D Reject(const FVector3D& From) const;
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -96,6 +100,11 @@ FORCEINLINE FVector3D operator-(const FVector3D& Left, const FVector3D& Right)
 
 FORCEINLINE float operator*(const FVector3D& Left, const FVector3D& Right)
 {
+	/*
+	* Mathmatical Note:
+	* We can also calculate the dot product by the equation ||A.B||=|A||B|cosɑ
+	*/
+
 	return Left.X * Right.X + Left.Y * Right.Y + Left.Z * Right.Z;
 }
 
@@ -103,6 +112,11 @@ FORCEINLINE float operator*(const FVector3D& Left, const FVector3D& Right)
 
 FORCEINLINE FVector3D operator^(const FVector3D& Left, const FVector3D& Right)
 {
+	/*
+	* Mathmatical Note:
+	* We can also calculate the cross product by the equation ||A*B||=|A||B|sinɑ
+	*/
+
 	return FVector3D(
 		/*X*/ Left.Y * Right.Z - Left.Z * Right.Y,
 		/*Y*/ Left.Z * Right.X - Left.X * Right.Z,

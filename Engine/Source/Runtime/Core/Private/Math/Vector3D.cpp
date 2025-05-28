@@ -106,3 +106,29 @@ FVector3D FVector3D::CrossProduct(const FVector3D& Other) const
 }
 
 //-------------------------------------------------------------------------------------------------
+
+FVector3D FVector3D::Project(const FVector3D& Onto) const
+{
+	/*
+	* Mathmatical Note:
+	* The formula for projecting the vector A onto vector B is: Project(A->B) = ((A.B) / (||B||B||)) . B
+	* Since the Dot product of a vector to iself would be the square maginitude of itself, we can rewrite "||B||||B||" part as the dot product of B*B
+	* So the formula become Project(A->B) = (A.B / B.B) . B;
+	*/
+
+	return ((*this * Onto) / (Onto * Onto)) * Onto;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FVector3D FVector3D::Reject(const FVector3D& From) const
+{
+	/*
+	* Mathmatical Note:
+	* We can calculate the rejection of A from B by removing A from the projection A onto B.
+	*/
+
+	return *this - Project(From);
+}
+
+//-------------------------------------------------------------------------------------------------
