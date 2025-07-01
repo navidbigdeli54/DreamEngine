@@ -11,7 +11,7 @@ private:
 
 	/*
 	* I've implememted Matrix3D as colummed vector matrix
-	* IM order to be able to access vectors quickly, we store the entries as [colum row] order.
+	* In order to be able to access vectors quickly, we store the entries as [colum row] order.
 	*/
 	float Entries[3][3];
 
@@ -32,6 +32,8 @@ public:
 	FVector3D& operator[](int Index);
 
 	const FVector3D& operator[](int Index) const;
+
+	float Determinant() const;
 };
 
 //-------------------------------------------------------------------------------------------------

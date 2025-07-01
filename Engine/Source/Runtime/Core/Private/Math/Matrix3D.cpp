@@ -51,3 +51,17 @@ const FVector3D& FMatrix3D::operator[](int Index) const
 }
 
 //-------------------------------------------------------------------------------------------------
+
+float FMatrix3D::Determinant() const
+{
+	/*
+	* Determinant of a matrix is the hypervolume of the n-dimensional parallelepiped created by the vector in each column (or row in fact).
+	* The determinant can be calculated by the expansion by minors formula with for M3*3 is M00(M11M22-M12M21) + M01(M12M20-M10M22) + M02(M10M21-M11M20).
+	*/
+
+	return ((0, 0) * ((1, 1) * (2, 2) - (1, 2) * (2, 1))
+		+ ((0, 1) * ((1, 2) * (2, 0) - (1, 0) * (2, 2)))
+		+ (2, 0) * ((1, 0) * (2, 1) - (1, 1) * (2, 0)));
+}
+
+//-------------------------------------------------------------------------------------------------
