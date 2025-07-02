@@ -7,6 +7,7 @@
 
 struct FMatrix3D
 {
+
 private:
 
 	/*
@@ -33,7 +34,13 @@ public:
 
 	const FVector3D& operator[](int Index) const;
 
+	friend FMatrix3D& operator*(FMatrix3D& Left, const float Scalar);
+
+public:
+
 	float Determinant() const;
+
+	FMatrix3D InverseMatrix() const;
 };
 
 //-------------------------------------------------------------------------------------------------
@@ -62,6 +69,21 @@ FORCEINLINE FVector3D operator*(const FMatrix3D& Left, const FVector3D& Right)
 		Left(1, 0) * Right.X + Left(1, 1) * Right.Y + Left(1, 2) * Right.Z,
 		Left(2, 0) * Right.X + Left(2, 1) * Right.Y + Left(2, 2) * Right.Z
 	);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FORCEINLINE FMatrix3D& operator*(FMatrix3D& Left, const float Scalar)
+{
+	for (int i = 0; i < 3; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+		{
+			Left.Entries[i][j] *= Scalar;
+		}
+	}
+
+	return Left;
 }
 
 //-------------------------------------------------------------------------------------------------

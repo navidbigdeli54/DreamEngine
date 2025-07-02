@@ -57,11 +57,35 @@ float FMatrix3D::Determinant() const
 	/*
 	* Determinant of a matrix is the hypervolume of the n-dimensional parallelepiped created by the vector in each column (or row in fact).
 	* The determinant can be calculated by the expansion by minors formula with for M3*3 is M00(M11M22-M12M21) + M01(M12M20-M10M22) + M02(M10M21-M11M20).
+	* We can also calculate the determinant of a 3×3 matrix as the scalar triple product of its component vectors.
 	*/
 
-	return ((0, 0) * ((1, 1) * (2, 2) - (1, 2) * (2, 1))
-		+ ((0, 1) * ((1, 2) * (2, 0) - (1, 0) * (2, 2)))
-		+ (2, 0) * ((1, 0) * (2, 1) - (1, 1) * (2, 0)));
+	const FMatrix3D& M = *this;
+
+	return (M(0, 0) * (M(1, 1) * M(2, 2) - M(1, 2) * M(2, 1))
+		+ (M(0, 1) * (M(1, 2) * M(2, 0) - M(1, 0) * M(2, 2)))
+		+ M(0, 2) * (M(1, 0) * M(2, 1) - M(1, 1) * M(2, 0)));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::InverseMatrix() const
+{
+	const FMatrix3D& M = *this;
+
+	FVector3D VectorA = M[0];
+	FVector3D VectorB = M[1];
+	FVector3D VectorC = M[2];
+
+	FVector3D Row1 = VectorB ^ VectorC;
+	FVector3D Row2 = VectorC ^ VectorA;
+	FVector3D Row3 = VectorA ^ VectorB;
+
+	float InverseDeterminant = 1.f / (Row3 * VectorC);
+
+	FMatrix3D CofactorTranspose(Row1, Row2, Row3);
+
+	return CofactorTranspose * InverseDeterminant;
 }
 
 //-------------------------------------------------------------------------------------------------
