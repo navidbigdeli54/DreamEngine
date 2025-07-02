@@ -114,9 +114,9 @@ TEST_CASE("Vector3D::CrossProduct(&Vector3D)", "[Vector3D]")
 
 	FVector3D CrossProduct = Vector1 ^ Vector2;
 
-	REQUIRE(Math::AlmostEqual(CrossProduct.X, Vector1.Y * Vector2.Z - Vector1.Z * Vector2.Y));
-	REQUIRE(Math::AlmostEqual(CrossProduct.Y, Vector1.Z * Vector2.X - Vector1.X * Vector2.Z));
-	REQUIRE(Math::AlmostEqual(CrossProduct.Z, Vector1.X * Vector2.Y - Vector1.Y * Vector2.X));
+	REQUIRE(FMath::AlmostEqual(CrossProduct.X, Vector1.Y * Vector2.Z - Vector1.Z * Vector2.Y));
+	REQUIRE(FMath::AlmostEqual(CrossProduct.Y, Vector1.Z * Vector2.X - Vector1.X * Vector2.Z));
+	REQUIRE(FMath::AlmostEqual(CrossProduct.Z, Vector1.X * Vector2.Y - Vector1.Y * Vector2.X));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -137,7 +137,7 @@ TEST_CASE("Vector3D::DotProduct(&Vector3D)", "[Vector3D]")
 
 	float DotProduct = Vector1 * Vector2;
 
-	REQUIRE(Math::AlmostEqual(DotProduct, Vector1.X * Vector2.X + Vector1.Y * Vector2.Y + Vector1.Z * Vector2.Z));
+	REQUIRE(FMath::AlmostEqual(DotProduct, Vector1.X * Vector2.X + Vector1.Y * Vector2.Y + Vector1.Z * Vector2.Z));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -154,9 +154,9 @@ TEST_CASE("Vector3D::Scale(float)", "[Vector3D]")
 
 	FVector3D ScaledVector = Vector * RandScale;
 
-	REQUIRE(Math::AlmostEqual(ScaledVector.X, Vector.X * RandScale));
-	REQUIRE(Math::AlmostEqual(ScaledVector.Y, Vector.Y * RandScale));
-	REQUIRE(Math::AlmostEqual(ScaledVector.Z, Vector.Z * RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.X, Vector.X * RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.Y, Vector.Y * RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.Z, Vector.Z * RandScale));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -174,9 +174,9 @@ TEST_CASE("Vector3D::ScaleAndAssign(float)", "[Vector3D]")
 	float RandScale = static_cast<float>(rand());
 	CopyVector *= RandScale;
 
-	REQUIRE(Math::AlmostEqual(CopyVector.X, Vector.X * RandScale));
-	REQUIRE(Math::AlmostEqual(CopyVector.Y, Vector.Y * RandScale));
-	REQUIRE(Math::AlmostEqual(CopyVector.Z, Vector.Z * RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.X, Vector.X * RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.Y, Vector.Y * RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.Z, Vector.Z * RandScale));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -193,9 +193,9 @@ TEST_CASE("Vector3D::Divide(float)", "[Vector3D]")
 	float RandScale = static_cast<float>(rand());
 	FVector3D ScaledVector = Vector / RandScale;
 
-	REQUIRE(Math::AlmostEqual(ScaledVector.X, Vector.X / RandScale));
-	REQUIRE(Math::AlmostEqual(ScaledVector.Y, Vector.Y / RandScale));
-	REQUIRE(Math::AlmostEqual(ScaledVector.Z, Vector.Z / RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.X, Vector.X / RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.Y, Vector.Y / RandScale));
+	REQUIRE(FMath::AlmostEqual(ScaledVector.Z, Vector.Z / RandScale));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -213,9 +213,9 @@ TEST_CASE("Vector3D::DivideAndAssign(float)", "[Vector3D]")
 	float RandScale = static_cast<float>(rand());
 	CopyVector /= RandScale;
 
-	REQUIRE(Math::AlmostEqual(CopyVector.X, Vector.X / RandScale));
-	REQUIRE(Math::AlmostEqual(CopyVector.Y, Vector.Y / RandScale));
-	REQUIRE(Math::AlmostEqual(CopyVector.Z, Vector.Z / RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.X, Vector.X / RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.Y, Vector.Y / RandScale));
+	REQUIRE(FMath::AlmostEqual(CopyVector.Z, Vector.Z / RandScale));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -227,7 +227,7 @@ TEST_CASE("Vector3D::Magnitude", "[Vector3D]")
 	float RandY = static_cast<float>(rand());
 	float RandZ = static_cast<float>(rand());
 	FVector3D Vectpr(RandX, RandY, RandZ);
-	REQUIRE(Math::AlmostEqual(Vectpr.Magnitude(), Math::Sqrt(RandX * RandX + RandY * RandY + RandZ * RandZ)));
+	REQUIRE(FMath::AlmostEqual(Vectpr.Magnitude(), FMath::Sqrt(RandX * RandX + RandY * RandY + RandZ * RandZ)));
 }
 
 //-------------------------------------------------------------------------------------------------
