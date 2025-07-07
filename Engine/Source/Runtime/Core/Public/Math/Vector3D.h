@@ -103,6 +103,7 @@ FORCEINLINE float operator*(const FVector3D& Left, const FVector3D& Right)
 	/*
 	* Mathmatical Note:
 	* We can also calculate the dot product by the equation ||A.B||=|A||B|cosɑ
+	* Also A.B = Transpose(B) * A
 	*/
 
 	return Left.X * Right.X + Left.Y * Right.Y + Left.Z * Right.Z;
