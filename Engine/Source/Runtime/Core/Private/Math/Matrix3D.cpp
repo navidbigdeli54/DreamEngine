@@ -1,4 +1,5 @@
 #include "Math/Matrix3D.h"
+#include "Platform/PlatformMath.h"
 
 //-------------------------------------------------------------------------------------------------
 
@@ -86,6 +87,69 @@ FMatrix3D FMatrix3D::InverseMatrix() const
 	FMatrix3D CofactorTranspose(Row1, Row2, Row3);
 
 	return CofactorTranspose * InverseDeterminant;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeRotationX(const float Angle) const
+{
+	const float Cos = FMath::Cos(Angle);
+	const float Sin = FMath::Sin(Angle);
+
+	return FMatrix3D(1.f, 0.f, 0.f
+		, 0.f, Cos, -Sin
+		, 0.f, Sin, Cos
+	);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeRotationY(const float Angle) const
+{
+	const float Cos = FMath::Cos(Angle);
+	const float Sin = FMath::Sin(Angle);
+
+	return FMatrix3D(Cos, 0.f, Sin
+		, 0.f, 1.f, 0.f
+		, -Sin, 0.f, Cos
+	);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeRotationZ(const float Angle) const
+{
+	const float Cos = FMath::Cos(Angle);
+	const float Sin = FMath::Sin(Angle);
+
+	return FMatrix3D(Cos, -Sin, 0.f
+		, Sin, Cos, 0.f
+		, 0.f, 0.f, 1.f
+	);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeRotation(const float Angle, const FVector3D& Around) const
+{
+	const FVector3D Axis = Around.Normalize();
+
+	const float Cos = FMath::Cos(Angle);
+	const float Sin = FMath::Sin(Angle);
+	const float Diff = 1.f - Cos;
+
+	const float X = Axis.X * Diff;
+	const float Y = Axis.Y * Diff;
+	const float Z = Axis.Z * Diff;
+
+	const float AXAY = X * Axis.Y;
+	const float AXAZ = X * Axis.Z;
+	const float AYAZ = Y * Axis.Z;
+
+	return FMatrix3D(Cos + X * Axis.X, AXAY - Sin * Axis.Z, AXAZ + Sin * Axis.Y
+		, AXAY + Sin * Axis.Z, Cos + Y * Axis.Y, AYAZ - Sin * Axis.X
+		, AXAZ - Sin * Axis.Y, AYAZ + Sin * Axis.X, Cos + Z * Axis.Z
+	);
 }
 
 //-------------------------------------------------------------------------------------------------

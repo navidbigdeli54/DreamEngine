@@ -41,6 +41,16 @@ public:
 	float Determinant() const;
 
 	FMatrix3D InverseMatrix() const;
+
+public:
+
+	static FMatrix3D MakeRotationX(const float Angle) const;
+
+	static FMatrix3D MakeRotationY(const float Angle) const;
+
+	static FMatrix3D MakeRotationZ(const float Angle) const;
+
+	static FMatrix3D MakeRotation(const float Angle, const FVector3D& Around) const;
 };
 
 //-------------------------------------------------------------------------------------------------
