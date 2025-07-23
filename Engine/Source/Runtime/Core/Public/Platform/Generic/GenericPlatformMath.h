@@ -15,4 +15,8 @@ public:
 	static float Square(const float Value);
 
 	static bool AlmostEqual(const float Left, const float Right);
+
+	static float Cos(const float Angle);
+
+	static float Sin(const float Angle);
 };

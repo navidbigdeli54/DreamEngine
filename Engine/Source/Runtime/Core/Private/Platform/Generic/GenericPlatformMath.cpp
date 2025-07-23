@@ -40,3 +40,17 @@ bool FGenericPlatformMath::AlmostEqual(const float Left, const float Right)
 }
 
 //-------------------------------------------------------------------------------------------------
+
+float FGenericPlatformMath::Sin(const float Angle)
+{
+	return sin(Angle);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+float FGenericPlatformMath::Cos(const float Angle)
+{
+	return cos(Angle);
+}
+
+//-------------------------------------------------------------------------------------------------
