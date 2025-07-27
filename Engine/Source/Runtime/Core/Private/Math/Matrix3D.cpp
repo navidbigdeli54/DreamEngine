@@ -91,7 +91,7 @@ FMatrix3D FMatrix3D::InverseMatrix() const
 
 //-------------------------------------------------------------------------------------------------
 
-FMatrix3D FMatrix3D::MakeRotationX(const float Angle) const
+FMatrix3D FMatrix3D::MakeRotationX(const float Angle)
 {
 	const float Cos = FMath::Cos(Angle);
 	const float Sin = FMath::Sin(Angle);
@@ -104,7 +104,7 @@ FMatrix3D FMatrix3D::MakeRotationX(const float Angle) const
 
 //-------------------------------------------------------------------------------------------------
 
-FMatrix3D FMatrix3D::MakeRotationY(const float Angle) const
+FMatrix3D FMatrix3D::MakeRotationY(const float Angle)
 {
 	const float Cos = FMath::Cos(Angle);
 	const float Sin = FMath::Sin(Angle);
@@ -117,7 +117,7 @@ FMatrix3D FMatrix3D::MakeRotationY(const float Angle) const
 
 //-------------------------------------------------------------------------------------------------
 
-FMatrix3D FMatrix3D::MakeRotationZ(const float Angle) const
+FMatrix3D FMatrix3D::MakeRotationZ(const float Angle)
 {
 	const float Cos = FMath::Cos(Angle);
 	const float Sin = FMath::Sin(Angle);
@@ -130,7 +130,7 @@ FMatrix3D FMatrix3D::MakeRotationZ(const float Angle) const
 
 //-------------------------------------------------------------------------------------------------
 
-FMatrix3D FMatrix3D::MakeRotation(const float Angle, const FVector3D& Around) const
+FMatrix3D FMatrix3D::MakeRotation(const float Angle, const FVector3D& Around)
 {
 	const FVector3D Axis = Around.Normalize();
 
