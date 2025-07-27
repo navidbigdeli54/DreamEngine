@@ -43,9 +43,9 @@ TEST_CASE("Matrix3D::Determinant", "[Matrix3D]")
 TEST_CASE("Matrix3D::InverseMatrix(Vector3D)", "[Matrix3D]")
 {
 	srand(static_cast<unsigned int>(time(nullptr)));
-	FVector3D VectorA(rand(), rand(), rand());
-	FVector3D VectorB(rand(), rand(), rand());
-	FVector3D VectorC(rand(), rand(), rand());
+	FVector3D VectorA((float)rand(), (float)rand(), (float)rand());
+	FVector3D VectorB((float)rand(), (float)rand(), (float)rand());
+	FVector3D VectorC((float)rand(), (float)rand(), (float)rand());
 
 	FMatrix3D Matrix(VectorA, VectorB, VectorC);
 
