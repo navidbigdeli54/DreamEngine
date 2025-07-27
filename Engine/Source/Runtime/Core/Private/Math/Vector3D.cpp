@@ -86,6 +86,13 @@ float FVector3D::Magnitude() const
 
 //-------------------------------------------------------------------------------------------------
 
+float FVector3D::MagnitudeSquared() const
+{
+	return X * X + Y * Y + Z * Z;
+}
+
+//-------------------------------------------------------------------------------------------------
+
 FVector3D FVector3D::Normalize() const
 {
 	return (FVector3D(*this) / Magnitude());
@@ -116,7 +123,7 @@ FVector3D FVector3D::Project(const FVector3D& Onto) const
 	* So the formula become Project(A->B) = (A.B / B.B)B;
 	*/
 
-	return (CrossProduct(this, Onto) / CrossProduct(Onto, Onto)) * Onto;
+	return Onto * (DotProduct(Onto) / Onto.DotProduct(Onto));
 }
 
 //-------------------------------------------------------------------------------------------------

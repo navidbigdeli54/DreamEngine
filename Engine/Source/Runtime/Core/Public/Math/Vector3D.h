@@ -31,7 +31,7 @@ public:
 
 	FVector3D() : X(0.f), Y(0.f), Z(0.f) {}
 
-	FVector3D(float Value) : X(Value), Y(Value), Z(Value) {}
+	explicit FVector3D(float Value) : X(Value), Y(Value), Z(Value) {}
 
 	FVector3D(float InX, float InY, float InZ) : X(InX), Y(InY), Z(InZ) {}
 
@@ -54,6 +54,8 @@ public:
 public:
 
 	float Magnitude() const;
+
+	float MagnitudeSquared() const;
 
 	FVector3D Normalize() const;
 
