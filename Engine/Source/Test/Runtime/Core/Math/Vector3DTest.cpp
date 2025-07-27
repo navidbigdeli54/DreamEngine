@@ -142,6 +142,22 @@ TEST_CASE("Vector3D::DotProduct(&Vector3D)", "[Vector3D]")
 
 //-------------------------------------------------------------------------------------------------
 
+TEST_CASE("Vector3D::DotProduct(A,A) == |A||A|", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+	float VectorRandX = static_cast<float>(3);
+	float VectorRandY = static_cast<float>(4);
+	float VectorRandZ = static_cast<float>(5);
+	FVector3D Vector(VectorRandX, VectorRandY, VectorRandZ);
+
+	float DotProduct = Vector.DotProduct(Vector);
+	float MagnitudeSquared = Vector.MagnitudeSquared();
+
+	REQUIRE(FMath::AlmostEqual(DotProduct, MagnitudeSquared));
+}
+
+//-------------------------------------------------------------------------------------------------
+
 TEST_CASE("Vector3D::Scale(float)", "[Vector3D]")
 {
 	srand(static_cast<unsigned int>(time(nullptr)));
@@ -226,8 +242,37 @@ TEST_CASE("Vector3D::Magnitude", "[Vector3D]")
 	float RandX = static_cast<float>(rand());
 	float RandY = static_cast<float>(rand());
 	float RandZ = static_cast<float>(rand());
-	FVector3D Vectpr(RandX, RandY, RandZ);
-	REQUIRE(FMath::AlmostEqual(Vectpr.Magnitude(), FMath::Sqrt(RandX * RandX + RandY * RandY + RandZ * RandZ)));
+	FVector3D Vector(RandX, RandY, RandZ);
+	REQUIRE(FMath::AlmostEqual(Vector.Magnitude(), FMath::Sqrt(RandX * RandX + RandY * RandY + RandZ * RandZ)));
+}
+
+//-------------------------------------------------------------------------------------------------
+
+TEST_CASE("Vector3D::Project", "[Vector3D]")
+{
+	srand(static_cast<unsigned int>(time(nullptr)));
+
+	float VectorAX = static_cast<float>(rand());
+	float VectorAY = static_cast<float>(rand());
+	float VectorAZ = static_cast<float>(rand());
+	FVector3D VectorA(VectorAX, VectorAY, VectorAZ);
+
+	float VectorBX = static_cast<float>(rand());
+	float VectorBY = static_cast<float>(rand());
+	float VectorBZ = static_cast<float>(rand());
+	FVector3D VectorB(VectorBX, VectorBY, VectorBZ);
+
+
+	float DotProductAB = VectorA.DotProduct(VectorB);
+	float BMaginitudeSquare = VectorB.MagnitudeSquared();
+
+	FVector3D CustomCalculatedProject = VectorB * (DotProductAB / BMaginitudeSquare);
+
+	FVector3D ProjectFunction = VectorA.Project(VectorB);
+
+	REQUIRE(FMath::AlmostEqual(CustomCalculatedProject.X, ProjectFunction.X));
+	REQUIRE(FMath::AlmostEqual(CustomCalculatedProject.Y, ProjectFunction.Y));
+	REQUIRE(FMath::AlmostEqual(CustomCalculatedProject.Z, ProjectFunction.Z));
 }
 
 //-------------------------------------------------------------------------------------------------
