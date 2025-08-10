@@ -153,3 +153,37 @@ FMatrix3D FMatrix3D::MakeRotation(const float Angle, const FVector3D& Around)
 }
 
 //-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeReflection(const FVector3D& A)
+{
+	const float X = -2.f * A.X;
+	const float Y = -2.f * A.Y;
+	const float Z = -2.f * A.Z;
+
+	const float XY = X * A.Y;
+	const float XZ = X * A.Z;
+	const float YZ = Y * A.Z;
+
+	return FMatrix3D(1 + X * A.X, XY, XZ
+		, XY, 1 + Y * A.Y, YZ
+		, XZ, YZ, 1 + Z * A.Z);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeInvolution(const FVector3D& A)
+{
+	const float X = 2.f * A.X;
+	const float Y = 2.f * A.Y;
+	const float Z = 2.f * A.Z;
+
+	const float XY = X * A.Y;
+	const float XZ = X * A.Z;
+	const float YZ = Y * A.Z;
+
+	return FMatrix3D(-1 + X * A.X, XY, XZ
+		, XY, -1 + Y * A.Y, YZ
+		, XZ, YZ, -1 + Z * A.Z);
+}
+
+//-------------------------------------------------------------------------------------------------

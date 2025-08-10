@@ -51,6 +51,10 @@ public:
 	static FMatrix3D MakeRotationZ(const float Angle);
 
 	static FMatrix3D MakeRotation(const float Angle, const FVector3D& Around);
+
+	static FMatrix3D MakeReflection(const FVector3D& A);
+
+	static FMatrix3D MakeInvolution(const FVector3D& A);
 };
 
 //-------------------------------------------------------------------------------------------------
