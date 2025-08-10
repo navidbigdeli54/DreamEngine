@@ -187,3 +187,38 @@ FMatrix3D FMatrix3D::MakeInvolution(const FVector3D& A)
 }
 
 //-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeScale(const float Scale)
+{
+	return MakeScale(Scale, Scale, Scale);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeScale(const float SX, const float SY, const float SZ)
+{
+	return FMatrix3D(SX, 0.f, 0.f
+		, 0.f, SY, 0.f
+		, 0.f, 0.f, SZ);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeScale(const float S, const FVector3D& Direction)
+{
+	const float Scale = S - 1.f;
+
+	const float X = Direction.X * Scale;
+	const float Y = Direction.Y * Scale;
+	const float Z = Direction.Z * Scale;
+
+	const float XY = X * Direction.X;
+	const float XZ = X * Direction.Z;
+	const float YZ = Y * Direction.Z;
+
+	return FMatrix3D(1 + X * Direction.X, XY, XZ
+		, XY, 1 + Y * Direction.X, YZ
+		, XZ, YZ, 1 + Z * Direction.Z);
+}
+
+//-------------------------------------------------------------------------------------------------

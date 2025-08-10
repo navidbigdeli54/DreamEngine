@@ -55,6 +55,12 @@ public:
 	static FMatrix3D MakeReflection(const FVector3D& A);
 
 	static FMatrix3D MakeInvolution(const FVector3D& A);
+
+	static FMatrix3D MakeScale(const float Scale);
+
+	static FMatrix3D MakeScale(const float SX, const float SY, const float SZ);
+
+	static FMatrix3D MakeScale(const float S, const FVector3D& Direction);
 };
 
 //-------------------------------------------------------------------------------------------------
