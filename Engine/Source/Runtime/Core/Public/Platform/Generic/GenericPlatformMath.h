@@ -19,4 +19,6 @@ public:
 	static float Cos(const float Angle);
 
 	static float Sin(const float Angle);
+
+	static float Tan(const float Angle);
 };
