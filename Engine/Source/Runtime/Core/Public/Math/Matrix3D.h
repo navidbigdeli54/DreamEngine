@@ -61,6 +61,8 @@ public:
 	static FMatrix3D MakeScale(const float SX, const float SY, const float SZ);
 
 	static FMatrix3D MakeScale(const float S, const FVector3D& Direction);
+
+	static FMatrix3D MakeSkew(const float Angle, const FVector3D& A, const FVector3D& B);
 };
 
 //-------------------------------------------------------------------------------------------------

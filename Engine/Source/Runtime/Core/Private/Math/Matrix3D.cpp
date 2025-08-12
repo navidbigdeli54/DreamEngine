@@ -164,9 +164,9 @@ FMatrix3D FMatrix3D::MakeReflection(const FVector3D& A)
 	const float XZ = X * A.Z;
 	const float YZ = Y * A.Z;
 
-	return FMatrix3D(1 + X * A.X, XY, XZ
-		, XY, 1 + Y * A.Y, YZ
-		, XZ, YZ, 1 + Z * A.Z);
+	return FMatrix3D(1.f + X * A.X, XY, XZ
+		, XY, 1.f + Y * A.Y, YZ
+		, XZ, YZ, 1.f + Z * A.Z);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -181,9 +181,9 @@ FMatrix3D FMatrix3D::MakeInvolution(const FVector3D& A)
 	const float XZ = X * A.Z;
 	const float YZ = Y * A.Z;
 
-	return FMatrix3D(-1 + X * A.X, XY, XZ
-		, XY, -1 + Y * A.Y, YZ
-		, XZ, YZ, -1 + Z * A.Z);
+	return FMatrix3D(-1.f + X * A.X, XY, XZ
+		, XY, -1.f + Y * A.Y, YZ
+		, XZ, YZ, -1.f + Z * A.Z);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -216,9 +216,24 @@ FMatrix3D FMatrix3D::MakeScale(const float S, const FVector3D& Direction)
 	const float XZ = X * Direction.Z;
 	const float YZ = Y * Direction.Z;
 
-	return FMatrix3D(1 + X * Direction.X, XY, XZ
-		, XY, 1 + Y * Direction.X, YZ
-		, XZ, YZ, 1 + Z * Direction.Z);
+	return FMatrix3D(1.f + X * Direction.X, XY, XZ
+		, XY, 1.f + Y * Direction.X, YZ
+		, XZ, YZ, 1.f + Z * Direction.Z);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FMatrix3D FMatrix3D::MakeSkew(const float Angle, const FVector3D& A, const FVector3D& B)
+{
+	const float T = FMath::Tan(Angle);
+
+	const float X = A.X * T;
+	const float Y = A.Y * T;
+	const float Z = A.Z * T;
+
+	return FMatrix3D(1.f + X * B.X, X * B.Y, X * B.Z
+		, Y * B.X, 1 + Y * B.Y, Y * B.Z
+		, Z * B.X, Z * B.Y, 1 + Z * B.Z);
 }
 
 //-------------------------------------------------------------------------------------------------
