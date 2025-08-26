@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Platform/Platform.h"
 #include "Vector3D.h"
+#include "Platform/Platform.h"
 
 //-------------------------------------------------------------------------------------------------
 
@@ -30,9 +30,9 @@ public:
 
 	const float& operator()(int Row, int Column) const;
 
-	FVector3D& operator[](int Index);
+	FVector3D& operator[](int Column);
 
-	const FVector3D& operator[](int Index) const;
+	const FVector3D& operator[](int Column) const;
 
 	friend FMatrix3D& operator*(FMatrix3D& Left, const float Scalar);
 

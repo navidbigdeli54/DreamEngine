@@ -39,16 +39,16 @@ const float& FMatrix3D::operator()(int Row, int Column) const
 
 //-------------------------------------------------------------------------------------------------
 
-FVector3D& FMatrix3D::operator[](int Index)
+FVector3D& FMatrix3D::operator[](int Column)
 {
-	return *reinterpret_cast<FVector3D*>(Entries[Index]);
+	return *reinterpret_cast<FVector3D*>(Entries[Column]);
 }
 
 //-------------------------------------------------------------------------------------------------
 
-const FVector3D& FMatrix3D::operator[](int Index) const
+const FVector3D& FMatrix3D::operator[](int Column) const
 {
-	return *reinterpret_cast<const FVector3D*>(Entries[Index]);
+	return *reinterpret_cast<const FVector3D*>(Entries[Column]);
 }
 
 //-------------------------------------------------------------------------------------------------
