@@ -39,6 +39,10 @@ public:
 
 public:
 
+	bool operator==(const FVector3D& Other) const;
+
+	bool operator!=(const FVector3D& Other) const;
+
 	float& operator [](int Index);
 
 	const float& operator [](int Index) const;

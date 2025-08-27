@@ -17,13 +17,13 @@ FMatrix4D::FMatrix4D(const FVector4D& First, const FVector4D& Second, const FVec
 
 FMatrix4D::FMatrix4D(float M00, float M01, float M02, float M03, float M10, float M11, float M12, float M13, float M20, float M21, float M22, float M23, float M30, float M31, float M32, float M33)
 {
-	Entries[0][0] = M00; Entries[0][1] = M01; Entries[0][2] = M02; Entries[0][3] = M03;
+	Entries[0][0] = M00; Entries[0][1] = M10; Entries[0][2] = M20; Entries[0][3] = M30;
 
-	Entries[1][0] = M10; Entries[1][1] = M11; Entries[1][2] = M12; Entries[1][3] = M13;
+	Entries[1][0] = M01; Entries[1][1] = M11; Entries[1][2] = M21; Entries[1][3] = M31;
 
-	Entries[2][0] = M20; Entries[2][1] = M21; Entries[2][2] = M22; Entries[2][3] = M23;
+	Entries[2][0] = M02; Entries[2][1] = M12; Entries[2][2] = M22; Entries[2][3] = M32;
 
-	Entries[3][0] = M30; Entries[3][1] = M31; Entries[3][2] = M32; Entries[3][3] = M33;
+	Entries[3][0] = M03; Entries[3][1] = M13; Entries[3][2] = M23; Entries[3][3] = M33;
 }
 
 //-------------------------------------------------------------------------------------------------

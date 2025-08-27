@@ -15,6 +15,10 @@ public:
 
 public:
 
+	bool operator==(const FVector4D& Other) const;
+
+	bool operator!=(const FVector4D& Other) const;
+
 	float& operator[](int Component);
 
 	const float& operator[](int Component) const;
