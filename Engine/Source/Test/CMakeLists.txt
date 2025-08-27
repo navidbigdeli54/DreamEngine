@@ -16,8 +16,10 @@ add_executable(Test
 	
 	#Math
 	"Runtime/Core/Math/Vector3DTest.cpp"
+	"Runtime/Core/Math/Vector4DTest.cpp"
 	"Runtime/Core/Math/Matrix3DTest.cpp"
-)
+	"Runtime/Core/Math/Matrix4DTest.cpp"
+	"Runtime/Core/Math/Transform4DTest.cpp")
 
 target_link_libraries(Test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(Test PRIVATE Runtime)
