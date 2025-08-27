@@ -36,7 +36,7 @@ add_library(Runtime
     #Math
     "Core/Private/Math/Vector3D.cpp"
     "Core/Private/Math/Matrix3D.cpp"
-    "Core/Private/Math/Matrix4D.cpp")
+    "Core/Private/Math/Matrix4D.cpp" "Core/Private/Math/Vector4D.cpp")
 
 target_include_directories(Runtime 
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Engine/Public"
