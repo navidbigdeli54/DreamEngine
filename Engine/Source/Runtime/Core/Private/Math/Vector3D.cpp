@@ -24,6 +24,20 @@ FVector3D::FVector3D(const FVector3D& InVector)
 
 //-------------------------------------------------------------------------------------------------
 
+bool FVector3D::operator==(const FVector3D& Other) const
+{
+	return X == Other.X && Y == Other.Y && Z == Other.Z;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+bool FVector3D::operator!=(const FVector3D& Other) const
+{
+	return X != Other.X || Y != Other.Y || Z != Other.Z;
+}
+
+//-------------------------------------------------------------------------------------------------
+
 float& FVector3D::operator[](int Index)
 {
 	return ((&X)[Index]);
