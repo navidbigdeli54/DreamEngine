@@ -114,20 +114,6 @@ FVector3D FVector3D::Normalize() const
 
 //-------------------------------------------------------------------------------------------------
 
-float FVector3D::DotProduct(const FVector3D& Other) const
-{
-	return *this * Other;
-}
-
-//-------------------------------------------------------------------------------------------------
-
-FVector3D FVector3D::CrossProduct(const FVector3D& Other) const
-{
-	return *this ^ Other;
-}
-
-//-------------------------------------------------------------------------------------------------
-
 FVector3D FVector3D::Project(const FVector3D& Onto) const
 {
 	/*
@@ -137,7 +123,7 @@ FVector3D FVector3D::Project(const FVector3D& Onto) const
 	* So the formula become Project(A->B) = (A.B / B.B)B;
 	*/
 
-	return Onto * (DotProduct(Onto) / Onto.DotProduct(Onto));
+	return Onto * (DotProduct(*this, Onto) / DotProduct(Onto, Onto));
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -151,6 +137,20 @@ FVector3D FVector3D::Reject(const FVector3D& From) const
 	*/
 
 	return *this - Project(From);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+float FVector3D::DotProduct(const FVector3D& Left, const FVector3D& Right)
+{
+	return Left * Right;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+FVector3D FVector3D::CrossProduct(const FVector3D& Left, const FVector3D& Right)
+{
+	return Left ^ Right;
 }
 
 //-------------------------------------------------------------------------------------------------

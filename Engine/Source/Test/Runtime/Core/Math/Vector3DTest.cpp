@@ -150,7 +150,7 @@ TEST_CASE("Vector3D::DotProduct(A,A) == |A||A|", "[Vector3D]")
 	float VectorRandZ = static_cast<float>(5);
 	FVector3D Vector(VectorRandX, VectorRandY, VectorRandZ);
 
-	float DotProduct = Vector.DotProduct(Vector);
+	float DotProduct = FVector3D::DotProduct(Vector, Vector);
 	float MagnitudeSquared = Vector.MagnitudeSquared();
 
 	REQUIRE(FMath::AlmostEqual(DotProduct, MagnitudeSquared));
@@ -263,7 +263,7 @@ TEST_CASE("Vector3D::Project", "[Vector3D]")
 	FVector3D VectorB(VectorBX, VectorBY, VectorBZ);
 
 
-	float DotProductAB = VectorA.DotProduct(VectorB);
+	float DotProductAB = FVector3D::DotProduct(VectorA,VectorB);
 	float BMaginitudeSquare = VectorB.MagnitudeSquared();
 
 	FVector3D CustomCalculatedProject = VectorB * (DotProductAB / BMaginitudeSquare);

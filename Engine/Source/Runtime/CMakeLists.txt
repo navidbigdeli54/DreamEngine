@@ -27,6 +27,7 @@ add_library(Runtime
     "Core/Public/Math/Matrix3D.h"
     "Core/Public/Math/Matrix4D.h"
     "Core/Public/Math/Transform4D.h"
+    "Core/Public/Math/Quaternion.h"
 
     #Private
     #----------------------------------------------------------------------------------------------
@@ -39,7 +40,8 @@ add_library(Runtime
     "Core/Private/Math/Vector4D.cpp"
     "Core/Private/Math/Matrix3D.cpp"
     "Core/Private/Math/Matrix4D.cpp"
-    "Core/Private/Math/Transform4D.cpp")
+    "Core/Private/Math/Transform4D.cpp" 
+    "Core/Private/Math/Quaternion.cpp")
 
 target_include_directories(Runtime 
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/Engine/Public"

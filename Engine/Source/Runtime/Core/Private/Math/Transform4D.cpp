@@ -67,22 +67,22 @@ FTransform4D FTransform4D::Inverse() const
 	const FVector3D& C = M[2];
 	const FVector3D& D = M[3];
 
-	FVector3D S = A.CrossProduct(B);
-	FVector3D T = C.CrossProduct(D);
+	FVector3D S = FVector3D::CrossProduct(A, B);
+	FVector3D T = FVector3D::CrossProduct(C, D);
 
-	const float InvertedDeterminant = 1.0f / S.DotProduct(C);
+	const float InvertedDeterminant = 1.0f / FVector3D::DotProduct(S,C);
 
 	S *= InvertedDeterminant;
 	T *= InvertedDeterminant;
 
 	const FVector3D V = C * InvertedDeterminant;
 
-	const FVector3D R0 = B.CrossProduct(V);
-	const FVector3D R1 = V.CrossProduct(A);
+	const FVector3D R0 = FVector3D::CrossProduct(B, V);
+	const FVector3D R1 = FVector3D::CrossProduct(V, A);
 
-	return FTransform4D(R0.X, R0.Y, R0.Z, -B.DotProduct(T),
-		R1.X, R1.Y, R1.Z, A.DotProduct(T),
-		S.X, S.Y, S.Z, -D.DotProduct(S));
+	return FTransform4D(R0.X, R0.Y, R0.Z, FVector3D::DotProduct(B, T),
+		R1.X, R1.Y, R1.Z, FVector3D::DotProduct(A, T),
+		S.X, S.Y, S.Z, -FVector3D::DotProduct(D, S));
 }
 
 //-------------------------------------------------------------------------------------------------

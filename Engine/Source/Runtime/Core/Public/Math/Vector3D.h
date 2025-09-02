@@ -63,13 +63,15 @@ public:
 
 	FVector3D Normalize() const;
 
-	float DotProduct(const FVector3D& Other) const;
-
-	FVector3D CrossProduct(const FVector3D& Other) const;
-
 	FVector3D Project(const FVector3D& Onto) const;
 
 	FVector3D Reject(const FVector3D& From) const;
+
+public:
+
+	static float DotProduct(const FVector3D& Left, const FVector3D& Right);
+
+	static FVector3D CrossProduct(const FVector3D& Left, const FVector3D& Right);
 };
 
 //-------------------------------------------------------------------------------------------------
