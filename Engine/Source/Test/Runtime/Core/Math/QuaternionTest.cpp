@@ -19,3 +19,5 @@ TEST_CASE("Quaternion::operator*(const Quaternion&, const Quaterion&)", "[Quater
 	REQUIRE(Multiplication.GetVectorPart() == VectorPart);
 	REQUIRE(Multiplication.W == ScalarPart);
 }
+
+//-------------------------------------------------------------------------------------------------
